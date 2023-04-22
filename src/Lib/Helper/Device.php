@@ -1,8 +1,8 @@
 <?php
 
-namespace Rats\Zkteco\Lib\Helper;
+namespace Bmz\Zkteco\Lib\Helper;
 
-use Rats\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Lib\ZKTeco;
 
 class Device
 {
@@ -145,7 +145,7 @@ class Device
     $byte1 = chr((int)($rank % 256));
     $byte2 = chr((int)($rank >> 8));
     $byte3 = chr(0);
-    $command_string = $byte1.$byte2.$byte3.' '.$text;
+    $command_string = $byte1 . $byte2 . $byte3 . ' ' . $text;
     return $self->_command($command, $command_string);
   }
 }

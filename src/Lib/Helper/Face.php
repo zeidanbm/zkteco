@@ -1,8 +1,8 @@
 <?php
 
-namespace Rats\Zkteco\Lib\Helper;
+namespace Bmz\Zkteco\Lib\Helper;
 
-use Rats\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Lib\ZKTeco;
 
 class Face
 {
@@ -20,4 +20,3 @@ class Face
         return $self->_command($command, $command_string);
     }
 }
-

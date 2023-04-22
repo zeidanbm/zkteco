@@ -1,25 +1,25 @@
 <?php
 
-namespace Rats\Zkteco\Lib;
+namespace Bmz\Zkteco\Lib;
 
 use ErrorException;
 use Exception;
-use Rats\Zkteco\Lib\Helper\Attendance;
-use Rats\Zkteco\Lib\Helper\Device;
-use Rats\Zkteco\Lib\Helper\Face;
-use Rats\Zkteco\Lib\Helper\Fingerprint;
-use Rats\Zkteco\Lib\Helper\Os;
-use Rats\Zkteco\Lib\Helper\Pin;
-use Rats\Zkteco\Lib\Helper\Platform;
-use Rats\Zkteco\Lib\Helper\SerialNumber;
-use Rats\Zkteco\Lib\Helper\Ssr;
-use Rats\Zkteco\Lib\Helper\Time;
-use Rats\Zkteco\Lib\Helper\User;
-use Rats\Zkteco\Lib\Helper\Util;
-use Rats\Zkteco\Lib\Helper\Connect;
-use Rats\Zkteco\Lib\Helper\Version;
-use Rats\Zkteco\Lib\Helper\WorkCode;
-use Rats\Zkteco\Lib\Helper\Door;
+use Bmz\Zkteco\Lib\Helper\Attendance;
+use Bmz\Zkteco\Lib\Helper\Device;
+use Bmz\Zkteco\Lib\Helper\Face;
+use Bmz\Zkteco\Lib\Helper\Fingerprint;
+use Bmz\Zkteco\Lib\Helper\Os;
+use Bmz\Zkteco\Lib\Helper\Pin;
+use Bmz\Zkteco\Lib\Helper\Platform;
+use Bmz\Zkteco\Lib\Helper\SerialNumber;
+use Bmz\Zkteco\Lib\Helper\Ssr;
+use Bmz\Zkteco\Lib\Helper\Time;
+use Bmz\Zkteco\Lib\Helper\User;
+use Bmz\Zkteco\Lib\Helper\Util;
+use Bmz\Zkteco\Lib\Helper\Connect;
+use Bmz\Zkteco\Lib\Helper\Version;
+use Bmz\Zkteco\Lib\Helper\WorkCode;
+use Bmz\Zkteco\Lib\Helper\Door;
 
 class ZKTeco
 {

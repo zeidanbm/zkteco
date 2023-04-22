@@ -1,17 +1,17 @@
 {
-  "name": "rats/zkteco",
+  "name": "bmz/zkteco",
   "description": "ZKTeco Laravel Library",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Raihan Afroz",
-      "email": "raihanafroz9@gmail.com"
+      "name": "Bilal Zeidan",
+      "email": "zeidanbm89@gmail.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Rats\\Zkteco\\": "src"
+      "Bmz\\Zkteco\\": "src"
     }
   },
   "minimum-stability": "dev",

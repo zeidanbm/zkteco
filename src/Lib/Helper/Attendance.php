@@ -1,8 +1,8 @@
 <?php
 
-namespace Rats\Zkteco\Lib\Helper;
+namespace Bmz\Zkteco\Lib\Helper;
 
-use Rats\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Lib\ZKTeco;
 
 class Attendance
 {
@@ -38,8 +38,8 @@ class Attendance
                 $id = str_replace(chr(0), '', $id);
                 $state = hexdec(substr($u[1], 56, 2));
                 $timestamp = Util::decodeTime(hexdec(Util::reverseHex(substr($u[1], 58, 8))));
-                $type = hexdec(Util::reverseHex(substr($u[1], 66, 2 )));
-				
+                $type = hexdec(Util::reverseHex(substr($u[1], 66, 2)));
+
                 $attendance[] = [
                     'uid' => $uid,
                     'id' => $id,
@@ -50,7 +50,6 @@ class Attendance
 
                 $attData = substr($attData, 40);
             }
-
         }
 
         return $attendance;
