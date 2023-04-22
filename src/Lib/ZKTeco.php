@@ -21,7 +21,8 @@ use Rats\Zkteco\Lib\Helper\Version;
 use Rats\Zkteco\Lib\Helper\WorkCode;
 
 
-class ZKTeco{
+class ZKTeco
+{
   public $_ip;
   public $_port;
   public $_zkclient;
@@ -44,7 +45,6 @@ class ZKTeco{
 
     $timeout = array('sec' => 60, 'usec' => 500000);
     socket_set_option($this->_zkclient, SOL_SOCKET, SO_RCVTIMEO, $timeout);
-
   }
 
   /**
@@ -238,6 +238,17 @@ class ZKTeco{
   }
 
   /**
+   * Get user data by id and finger
+   *
+   * @return object {userid, name, cardno, uid, role, password}
+   */
+  public function getUserById($uid, $finger = 0)
+  {
+    return User::getSelectedUser($this, $uid, $finger);
+  }
+
+
+  /**
    * Set user data
    *
    * @param int $uid Unique ID (max 65535)
@@ -248,9 +259,9 @@ class ZKTeco{
    * @param int $cardno Default 0 (max length = 10, only numbers)
    * @return bool|mixed
    */
-  public function setUser($uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0)
+  public function setUser($uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group)
   {
-    return User::set($this, $uid, $userid, $name, $password, $role, $cardno);
+    return User::set($this, $uid, $userid, $name, $password, $role, $cardno, $group);
   }
 
 
@@ -286,6 +297,18 @@ class ZKTeco{
     return User::remove($this, $uid);
   }
 
+
+  /**
+   * Get fingerprint data array by UID
+   * TODO: Can get data, but don't know how to parse the data. Need more documentation about it...
+   *
+   * @param integer $uid Unique ID (max 65535)
+   * @return array Binary fingerprint data array (where key is finger ID (0-9))
+   */
+  public function enroll($uid)
+  {
+    return Fingerprint::startEnroll($this, $uid, 6);
+  }
 
 
   /**

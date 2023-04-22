@@ -21,7 +21,7 @@ class Util
   const CMD_TESTVOICE = 1017; # Voice test to the device
   const CMD_CHANGE_SPEED = 1101;
 
-
+  const CMD_STARTENROLL = 61; # Start fingerprint enroll
   const CMD_WRITE_LCD = 66; # Write in LCD
   const CMD_CLEAR_LCD = 67; # Clear LCD
 
@@ -204,7 +204,7 @@ class Util
     }
 
     if ($chksum > 0) {
-      $chksum = -($chksum);
+      $chksum = - ($chksum);
     } else {
       $chksum = abs($chksum);
     }
@@ -245,7 +245,6 @@ class Util
     $buf = pack('SSSS', $command, $chksum, $session_id, $reply_id);
 
     return $buf . $command_string;
-
   }
 
   /**

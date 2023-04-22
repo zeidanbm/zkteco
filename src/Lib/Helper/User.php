@@ -16,7 +16,7 @@ class User
      * @param int $cardno Default 0 (max length = 10, only numbers)
      * @return bool|mixed
      */
-    static public function set(ZKTeco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0)
+    static public function set(ZKTeco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group = 1)
     {
         $self->_section = __METHOD__;
 
@@ -43,11 +43,26 @@ class User
             str_pad($password, 8, chr(0)),
             str_pad($name, 24, chr(0)),
             str_pad($cardno, 4, chr(0)),
-            str_pad(chr(1), 9, chr(0)),
+            str_pad(chr($group), 9, chr(0)),
             str_pad($userid, 9, chr(0)),
             str_repeat(chr(0), 15)
         ]);
-//        die($command_string);
+        //        die($command_string);
+        return $self->_command($command, $command_string);
+    }
+
+    /**
+     * @param ZKTeco $self
+     * @param int $uid Unique ID (max 65535)
+     * @param int $finger Default 0 (max 10, only numbers)
+     * @return bool|mixed
+     */
+    static public function getSelectedUser(ZKTeco $self, $uid, $finger = 0)
+    {
+        $command = Util::CMD_USER_TEMP_RRQ;;
+        $byte1 = chr((int)($uid % 256));
+        $byte2 = chr((int)($uid >> 8));
+        $command_string = $byte1 . $byte2 . chr($finger);
         return $self->_command($command, $command_string);
     }
 
