@@ -19,7 +19,7 @@ use Rats\Zkteco\Lib\Helper\Util;
 use Rats\Zkteco\Lib\Helper\Connect;
 use Rats\Zkteco\Lib\Helper\Version;
 use Rats\Zkteco\Lib\Helper\WorkCode;
-
+use Rats\Zkteco\Lib\Helper\Door;
 
 class ZKTeco
 {
@@ -454,5 +454,10 @@ class ZKTeco
   public function writeLCD()
   {
     return Device::writeLCD($this, 2, "RAIHAN Afroz Topu");
+  }
+
+  public function unlockDoor($delay = 1000)
+  {
+    return Door::unlock($this, $delay);
   }
 }
