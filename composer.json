@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Bmz\\ZKTeco\\Lib\\": "src/"
+      "Bmz\\Zkteco\\Lib\\": "src/"
     }
   },
   "minimum-stability": "dev",
