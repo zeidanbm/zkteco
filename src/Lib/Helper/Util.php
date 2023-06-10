@@ -2,7 +2,7 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class Util
 {
@@ -154,10 +154,10 @@ class Util
    * indicating that data packets are to be sent
    * Returns the amount of bytes that are going to be sent
    *
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|number
    */
-  static public function getSize(ZKTeco $self)
+  static public function getSize(Zkteco $self)
   {
     $u = unpack('H2h1/H2h2/H2h3/H2h4/H2h5/H2h6/H2h7/H2h8', substr($self->_data_recv, 0, 8));
     $command = hexdec($u['h2'] . $u['h1']);
@@ -341,12 +341,12 @@ class Util
 
   /**
    * Receive data from device
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @param int $maxErrors
    * @param bool $first if 'true' don't remove first 4 bytes for first row
    * @return string
    */
-  static public function recData(ZKTeco $self, $maxErrors = 10, $first = true)
+  static public function recData(Zkteco $self, $maxErrors = 10, $first = true)
   {
     $data = '';
     $bytes = self::getSize($self);
@@ -393,21 +393,21 @@ class Util
   }
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @param int $received
    * @param int $bytes
    */
-  static private function logReceived(ZKTeco $self, $received, $bytes)
+  static private function logReceived(Zkteco $self, $received, $bytes)
   {
     self::logger($self, 'Received: ' . $received . ' of ' . $bytes . ' bytes');
   }
 
   /**
    * Write log
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @param string $str
    */
-  static private function logger(ZKTeco $self, $str)
+  static private function logger(Zkteco $self, $str)
   {
     if (defined('ZK_LIB_LOG')) {
       //use constant if defined

@@ -2,16 +2,16 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class Time
 {
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param string $t Format: "Y-m-d H:i:s"
      * @return bool|mixed
      */
-    static public function set(ZKTeco $self, $t)
+    static public function set(Zkteco $self, $t)
     {
         $self->_section = __METHOD__;
 
@@ -22,10 +22,10 @@ class Time
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @return bool|mixed
      */
-    static public function get(ZKTeco $self)
+    static public function get(Zkteco $self)
     {
         $self->_section = __METHOD__;
 

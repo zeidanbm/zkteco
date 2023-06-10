@@ -2,11 +2,11 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class Door
 {
-    static public function unlock(ZKTeco $self, $delay)
+    static public function unlock(Zkteco $self, $delay)
     {
         $self->_section = __METHOD__;
 

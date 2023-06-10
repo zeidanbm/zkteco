@@ -2,12 +2,12 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class User
 {
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique ID (max 65535)
      * @param int|string $userid (max length = 9, only numbers - depends device setting)
      * @param string $name (max length = 24)
@@ -16,18 +16,8 @@ class User
      * @param int $cardno Default 0 (max length = 10, only numbers)
      * @return bool|mixed
      */
-    static public function set(ZKTeco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group = 1)
-    {
-        $self->_section = __METHOD__;
-
-        if (
-            (int)$uid === 0 ||
-            (int)$uid > Util::USHRT_MAX ||
-            strlen($userid) > 9 ||
-            strlen($name) > 24 ||
-            strlen($password) > 8 ||
-            strlen($cardno) > 10
-        ) {
+    static public function set(Zkteco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group = 1)
+    {ZKTeco
             return false;
         }
 
@@ -52,12 +42,12 @@ class User
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique ID (max 65535)
      * @param int $finger Default 0 (max 10, only numbers)
      * @return bool|mixed
      */
-    static public function getSelectedUser(ZKTeco $self, $uid, $finger = 0)
+    static public function getSelectedUser(Zkteco $self, $uid, $finger = 0)
     {
         $command = Util::CMD_USER_TEMP_RRQ;;
         $byte1 = chr((int)($uid % 256));
@@ -67,10 +57,10 @@ class User
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @return array [userid, name, cardno, uid, role, password]
      */
-    static public function get(ZKTeco $self)
+    static public function get(Zkteco $self)
     {
         $self->_section = __METHOD__;
 
@@ -130,10 +120,10 @@ class User
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @return bool|mixed
      */
-    static public function clear(ZKTeco $self)
+    static public function clear(Zkteco $self)
     {
         $self->_section = __METHOD__;
 
@@ -144,10 +134,10 @@ class User
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @return bool|mixed
      */
-    static public function clearAdmin(ZKTeco $self)
+    static public function clearAdmin(Zkteco $self)
     {
         $self->_section = __METHOD__;
 
@@ -158,11 +148,11 @@ class User
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param integer $uid
      * @return bool|mixed
      */
-    static public function remove(ZKTeco $self, $uid)
+    static public function remove(Zkteco $self, $uid)
     {
         $self->_section = __METHOD__;
 

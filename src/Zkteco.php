@@ -1,6 +1,6 @@
 <?php
 
-namespace Bmz\Zkteco\Lib;
+namespace Bmz\Zkteco;
 
 use ErrorException;
 use Exception;
@@ -21,7 +21,7 @@ use Bmz\Zkteco\Lib\Helper\Version;
 use Bmz\Zkteco\Lib\Helper\WorkCode;
 use Bmz\Zkteco\Lib\Helper\Door;
 
-class ZKTeco
+class Zkteco
 {
   public $_ip;
   public $_port;

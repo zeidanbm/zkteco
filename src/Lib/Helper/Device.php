@@ -2,15 +2,15 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class Device
 {
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed
    */
-  static public function name(ZKTeco $self)
+  static public function name(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -21,7 +21,7 @@ class Device
   }
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed
    */
   static public function enable(ZKTeco $self)
@@ -35,10 +35,10 @@ class Device
   }
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed
    */
-  static public function disable(ZKTeco $self)
+  static public function disable(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -49,10 +49,10 @@ class Device
   }
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will turn off the device
    */
-  public static function powerOff(ZKTeco $self)
+  public static function powerOff(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -63,10 +63,10 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will restart the device
    */
-  public static function restart(ZKTeco $self)
+  public static function restart(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -77,10 +77,10 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will sleep the device
    */
-  public static function sleep(ZKTeco $self)
+  public static function sleep(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -91,10 +91,10 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will resume the device from sleep
    */
-  public static function resume(ZKTeco $self)
+  public static function resume(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -105,10 +105,10 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will play voice "Thank you"
    */
-  public static function testVoice(ZKTeco $self)
+  public static function testVoice(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -119,10 +119,10 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @return bool|mixed *** this will clear the LCD screen
    */
-  public static function clearLCD(ZKTeco $self)
+  public static function clearLCD(Zkteco $self)
   {
     $self->_section = __METHOD__;
 
@@ -132,12 +132,12 @@ class Device
 
 
   /**
-   * @param ZKTeco $self
+   * @param Zkteco $self
    * @param $rank *** Line number of text
    * @param $text *** Text which will display in the LCD screen
    * @return bool|mixed *** this will write text into the LCD
    */
-  public static function writeLCD(ZKTeco $self, $rank, $text)
+  public static function writeLCD(Zkteco $self, $rank, $text)
   {
     $self->_section = __METHOD__;
 

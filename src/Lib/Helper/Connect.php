@@ -3,7 +3,7 @@
 namespace Bmz\Zkteco\Lib\Helper;
 
 use Bmz\Zkteco\Lib\Helper\Util;
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 use ErrorException;
 use Exception;
 
@@ -13,7 +13,7 @@ class Connect
      * @param ZKTeco $self
      * @return bool
      */
-    static public function connect(ZKTeco $self)
+    static public function connect(Zkteco $self)
     {
         $self->_section = __METHOD__;
 
@@ -53,7 +53,7 @@ class Connect
      * @param ZKTeco $self
      * @return bool
      */
-    static public function disconnect(ZKTeco $self)
+    static public function disconnect(Zkteco $self)
     {
         $self->_section = __METHOD__;
 

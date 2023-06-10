@@ -2,15 +2,15 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class WorkCode
 {
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @return bool|mixed
      */
-    static public function get(ZKTeco $self)
+    static public function get(Zkteco $self)
     {
         $self->_section = __METHOD__;
 

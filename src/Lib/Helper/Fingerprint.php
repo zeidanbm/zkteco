@@ -2,18 +2,18 @@
 
 namespace Bmz\Zkteco\Lib\Helper;
 
-use Bmz\Zkteco\Lib\ZKTeco;
+use Bmz\Zkteco\Zkteco;
 
 class Fingerprint
 {
     /**
      * TODO: Can get data, but don't know how to parse the data. Need more documentation about it...
      *
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param integer $uid Unique Employee ID in ZK device
      * @return array Binary fingerprint data array (where key is finger ID (0-9))
      */
-    static public function get(ZKTeco $self, $uid)
+    static public function get(Zkteco $self, $uid)
     {
         $self->_section = __METHOD__;
 
@@ -32,12 +32,12 @@ class Fingerprint
 
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param integer $uid Unique Employee ID in ZK device
      * @param integer $finger Finger ID (0-9)
      * @return array
      */
-    private function _getFinger(ZKTeco $self, $uid, $finger)
+    private function _getFinger(Zkteco $self, $uid, $finger)
     {
         $command = Util::CMD_USER_TEMP_RRQ;
         $byte1 = chr((int)($uid % 256));
@@ -72,12 +72,12 @@ class Fingerprint
     /**
      * TODO: Still can not set fingerprint. Need more documentation about it...
      *
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique Employee ID in ZK device
      * @param array $data Binary fingerprint data array (where key is finger ID (0-9) same like returned array from 'get' method)
      * @return int Count of added fingerprints
      */
-    static public function set(ZKTeco $self, $uid, array $data)
+    static public function set(Zkteco $self, $uid, array $data)
     {
         $self->_section = __METHOD__;
 
@@ -98,11 +98,11 @@ class Fingerprint
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param string $data Binary fingerprint data item
      * @return bool|mixed
      */
-    private function _setFinger(ZKTeco $self, $data)
+    private function _setFinger(Zkteco $self, $data)
     {
         $command = Util::CMD_USER_TEMP_WRQ;
         $command_string = $data;
@@ -111,12 +111,12 @@ class Fingerprint
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique Employee ID in ZK device
      * @param array $data Fingers ID array (0-9)
      * @return int Count of deleted fingerprints
      */
-    static public function remove(ZKTeco $self, $uid, array $data)
+    static public function remove(Zkteco $self, $uid, array $data)
     {
         $self->_section = __METHOD__;
 
@@ -134,12 +134,12 @@ class Fingerprint
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique Employee ID in ZK device
      * @param int $finger Finger ID (0-9)
      * @return bool
      */
-    private function _removeFinger(ZKTeco $self, $uid, $finger)
+    private function _removeFinger(Zkteco $self, $uid, $finger)
     {
         $command = Util::CMD_DELETE_USER_TEMP;
         $byte1 = chr((int)($uid % 256));
@@ -152,19 +152,19 @@ class Fingerprint
     }
 
     /**
-     * @param ZKTeco $self
+     * @param Zkteco $self
      * @param int $uid Unique Employee ID in ZK device
      * @param int $finger Finger ID (0-9)
      * @return bool Returned true if exist
      */
-    private function _checkFinger(ZKTeco $self, $uid, $finger)
+    private function _checkFinger(Zkteco $self, $uid, $finger)
     {
         $fingerPrint = new Fingerprint();
         $res = $fingerPrint->_getFinger($self, $uid, $finger);
         return (bool)($res['size'] > 0);
     }
 
-    public static function startEnroll(ZKTeco $self, $uid, $finger)
+    public static function startEnroll(Zkteco $self, $uid, $finger)
     {
         $command = Util::CMD_STARTENROLL;
         $byte1 = chr((int)($uid % 256));
