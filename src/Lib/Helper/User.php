@@ -32,21 +32,22 @@ class User
         }
 
         $command = Util::CMD_SET_USER;
-        $byte1 = chr((int)($uid % 256));
-        $byte2 = chr((int)($uid >> 8));
-        $cardno = hex2bin(Util::reverseHex(dechex($cardno)));
+      //  $byte1 = chr((int)($uid % 256));
+       // $byte2 = chr((int)($uid >> 8));
+       // $cardno = hex2bin(Util::reverseHex(dechex($cardno)));
 
-        $command_string = implode('', [
-            $byte1,
-            $byte2,
-            chr($role),
-            str_pad($password, 8, chr(0)),
-            str_pad($name, 24, chr(0)),
-            str_pad($cardno, 4, chr(0)),
-            str_pad(chr($group), 9, chr(0)),
-            str_pad($userid, 9, chr(0)),
-            str_repeat(chr(0), 15)
-        ]);
+        //$command_string = implode('', [
+         //   $byte1,
+        //    $byte2,
+       //     chr($role),
+       //     str_pad($password, 8, chr(0)),
+        //    str_pad($name, 24, chr(0)),
+       //     str_pad($cardno, 4, chr(0)),
+       //     str_pad(chr($group), 9, chr(0)),
+       //     str_pad($userid, 9, chr(0)),
+       //     str_repeat(chr(0), 15)
+       // ]);
+        $command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr(1), '', $userid, '');
         //        die($command_string);
         return $self->_command($command, $command_string);
     }
