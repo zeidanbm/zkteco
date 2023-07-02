@@ -17,7 +17,17 @@ class User
      * @return bool|mixed
      */
     static public function set(Zkteco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group = 1)
-    {ZKTeco
+    {
+        $self->_section = __METHOD__;
+
+        if (
+            (int)$uid === 0 ||
+            (int)$uid > Util::USHRT_MAX ||
+            strlen($userid) > 9 ||
+            strlen($name) > 24 ||
+            strlen($password) > 8 ||
+            strlen($cardno) > 10
+        ) {
             return false;
         }
 
