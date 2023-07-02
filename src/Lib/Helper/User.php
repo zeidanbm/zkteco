@@ -47,7 +47,7 @@ class User
        //     str_pad($userid, 9, chr(0)),
        //     str_repeat(chr(0), 15)
        // ]);
-        $command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr($cardno), char($group), $userid, '');
+        $command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr($cardno), chr($group), $userid, '');
         //        die($command_string);
         return $self->_command($command, $command_string);
     }
