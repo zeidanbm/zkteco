@@ -19,7 +19,8 @@ class User
     static public function set(Zkteco $self, $uid, $userid, $name, $password, $role = Util::LEVEL_USER, $cardno = 0, $group = 1)
     {
         $self->_section = __METHOD__;
-
+        $command = Util::CMD_SET_USER;
+        
         if (
             (int)$uid === 0 ||
             (int)$uid > Util::USHRT_MAX ||
@@ -31,7 +32,7 @@ class User
             return false;
         }
 
-        $command = Util::CMD_SET_USER;
+        
       //  $byte1 = chr((int)($uid % 256));
        // $byte2 = chr((int)($uid >> 8));
        // $cardno = hex2bin(Util::reverseHex(dechex($cardno)));
@@ -47,7 +48,8 @@ class User
        //     str_pad($userid, 9, chr(0)),
        //     str_repeat(chr(0), 15)
        // ]);
-        $command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr($cardno), chr($group), $userid, '');
+        $command_string = pack('HB5s8sIxBHI', $uid, $role, mb_convert_encoding($password, $this->encoding, 'ignore'), mb_convert_encoding($name, $this->encoding, 'ignore'), $cardno, intval($group), 0, intval($userid));
+        //$command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr($cardno), chr($group), $userid, '');
         //        die($command_string);
         return $self->_command($command, $command_string);
     }
@@ -168,9 +170,10 @@ class User
         $self->_section = __METHOD__;
 
         $command = Util::CMD_DELETE_USER;
-        $byte1 = chr((int)($uid % 256));
-        $byte2 = chr((int)($uid >> 8));
-        $command_string = ($byte1 . $byte2);
+        //$byte1 = chr((int)($uid % 256));
+        //$byte2 = chr((int)($uid >> 8));
+        //$command_string = ($byte1 . $byte2);
+        $command_string = pack('h', $uid);
 
         return $self->_command($command, $command_string);
     }
