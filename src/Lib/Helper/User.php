@@ -48,7 +48,10 @@ class User
        //     str_pad($userid, 9, chr(0)),
        //     str_repeat(chr(0), 15)
        // ]);
-        $command_string = pack('HB5s8sIxBHI', $uid, $role, mb_convert_encoding($password, $this->encoding, 'ignore'), mb_convert_encoding($name, $this->encoding, 'ignore'), $cardno, intval($group), 0, intval($userid));
+        $name_pad = substr(mb_convert_encoding($name, $this->encoding, 'ignore'), 0, 24) . str_repeat("\x00", 24);
+        $card_str = pack('V', intval($cardno));
+        $command_string = pack('HB8s24s4sx7sx24s', $uid, $role, mb_convert_encoding($password, $this->encoding, 'ignore'), $name_pad, $card_str, strval($group), strval($userid));
+        //$command_string = pack('HB5s8sIxBHI', $uid, $role, mb_convert_encoding($password, $this->encoding, 'ignore'), mb_convert_encoding($name, $this->encoding, 'ignore'), $cardno, intval($group), 0, intval($userid));
         //$command_string = pack('axaa8a28aa7xa8a16', chr($uid), chr($role), $password, $name, chr($cardno), chr($group), $userid, '');
         //        die($command_string);
         return $self->_command($command, $command_string);
